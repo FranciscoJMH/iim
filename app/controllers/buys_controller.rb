@@ -73,6 +73,6 @@ class BuysController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def buy_params
-      params.require(:buy).permit(:iva, :total, :project_id)
+      params.require(:buy).permit(:iva, :total, :project_id, :user_id)
     end
 end
