@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1.5
+  iva: 1.5
+  total: 1.5
+  project: one
+
+two:
+  quantity: 1.5
+  iva: 1.5
+  total: 1.5
+  project: two
