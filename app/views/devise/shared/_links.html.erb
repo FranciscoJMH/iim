@@ -2,10 +2,13 @@
   <%= link_to "Iniciar Sesión", new_session_path(resource_name) %><br />
 <% end %>
 
+<h5>
+<div class="mb-5 pb-lg-2" style="color: #893131">
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Registrarse", new_registration_path(resource_name) %><br />
+  <%= link_to "Registrarse", new_registration_path(resource_name)%><br />
 <% end %>
-
+</div>
+</h5>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />

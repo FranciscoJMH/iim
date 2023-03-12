@@ -1,33 +1,57 @@
-<div class="col-4 offset-4">
-  <div class="row text-center">
-
-    <h2>Iniciar Sesión</h2>
+<section class="vh-100" style="background-color: #4f0505">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <%= image_tag "bg.jpg", height: "1080px", class: "m-2 bg-white bg-opacity-50 rounded", class: "img-fluid", style: "border-radius: 1rem 0 0 1rem"%>
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label :correo_electronico %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-      </div>
+                  <div class="d-flex justify-content-center mb-3 pb-1">
+                    <%= image_tag "logo.png", width: "370px", class: "m-2 bg-white bg-opacity-50 rounded", class: "img-fluid", style: "border-radius: 1rem 0 0 1rem"%>
+                  </div>
 
-      <div class="field">
-        <%= f.label :contraseña %><br />
-        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
-      </div>
+                  <div class="d-flex align-items-center mb-2 pb-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-badge-fill" viewBox="0 0 16 16" style="color: rgba(158,18,18,0.71)">
+                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
+                  </svg>
+                  <h4 class="fw-normal mb-0" style="letter-spacing: 1px;">Iniciar Sesión</h4>
+                  </div>
 
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :recordarme %>
-        </div>
-      <% end %>
+                  <h5>
+                  <div class="field form-outline mb-4">
+                    <%= f.label :correo_electrónico, class: "form-label" %><br />
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+                  </div>
 
-      <div class="actions">
-        <%= f.submit "Iniciar Sesión", class: 'btn btn-primary' %>
-      </div>
+                  <div class="field form-outline mb-4">
+                    <%= f.label :contraseña, class: "form-label" %><br />
+                    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+                  </div>
+                  </h5>
+
+                  <% if devise_mapping.rememberable? %>
+                    <div class="field form-check">
+                      <%= f.check_box :remember_me, class: "form-check-input"%>
+                      <%= f.label :recordarme, class: "form-check-label" %>
+                    </div>
+                  <% end %>
+
+                  <div class="actions pt-1 mb-4">
+                    <%= f.submit "Iniciar Sesión", class: 'btn btn-primary btn-lg'%>
+                  </div>
     <% end %>
 
     <%= render "devise/shared/links" %>
-
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-</div>
+</section>
