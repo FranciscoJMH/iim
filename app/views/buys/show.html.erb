@@ -102,7 +102,7 @@
 
 <h3>Iva <%= @buy.iva %> %: <%= @iva.round(2) %></h3>
 <h3>Total: <%= @total %></h3>
-<h3>Solicitó: <%= current_user.name %></h3>
+<h3>Solicitó: <%= @buy.user.name %></h3>
 <div>
   <%= link_to "Editar", edit_buy_path(@buy) %> |
   <%= link_to "Atras", buys_path %>
