@@ -1,40 +1,51 @@
-<div class="col-4 offset-4">
-  <div class="row text-center">
-
-    <h2>Registrarse</h2>
-
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-
-      <div class="field">
-        <%= f.label :nombre %><br />
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %>
-      </div>
-
-      <div class="field">
-        <%= f.label :correo_electronico %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-      </div>
-
-      <div class="field">
-        <%= f.label :contraseña %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
-      </div>
-
-      <div class="field">
-        <%= f.label :confirmar_contraseña %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Registrar" %>
-      </div>
-    <% end %>
-
-    <%= render "devise/shared/links" %>
-
+<section class="text-center">
+  <div class="p-1 bg-image">
+    <%= image_tag "bg_r.jpg", style:"background-image", height:"300px"%>
   </div>
-</div>
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+      margin-top: -110px;
+      background: hsla(0,0%,76%,0.6);
+      backdrop-filter: blur(10px);">
+
+      <div class="card-body py-4 px-md-5">
+
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-5">
+            <h1 class="fw-bold mb-3" style="color: #5d1515">Registrarse</h1>
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+              <h5>
+          <div class="field">
+            <%= f.label :nombre, class:"form-label"%><br />
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control form-label'%>
+          </div>
+
+          <div class="field">
+            <%= f.label :correo_electronico, class:"form-label" %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-label' %>
+          </div>
+
+          <div class="field">
+            <%= f.label :contraseña, class:"form-label" %>
+            <% if @minimum_password_length %>
+              <em>(mínimo <%= @minimum_password_length %> caracteres)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: 'form-control form-label' %>
+          </div>
+
+          <div class="field">
+            <%= f.label :confirmar_contraseña, class:"form-label" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control form-label' %>
+          </div>
+              </h5>
+          <div class="actions pt-2 mb-3">
+            <%= f.submit "Registrar", class:"btn btn-primary" %>
+          </div>
+        <% end %>
+            <%= render "devise/shared/links"%>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
