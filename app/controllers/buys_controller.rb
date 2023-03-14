@@ -12,7 +12,14 @@ class BuysController < ApplicationController
     @total = @buy.calculate_total
 
     @iva = @total * (@buy.iva / 100)
-    @total = @total * (100  + @buy.iva) || 0/100.0
+    @total = @total * (100  + @buy.iva) /100.0
+    respond_to do |format|
+      format.html
+      format.xlsx do
+        headers['Content-Disposition'] = "attachment; filename=\"Compra-#{Date.today}.xlsx\""
+      end
+
+    end
   end
 
   # GET /buys/new

@@ -9,7 +9,7 @@ class Buy < ApplicationRecord
   def calculate_total
     total = 0
     buy_articles.each do |buy_article|
-      total += buy_article.quantity || 0 * buy_article.article.price || 0
+      total += buy_article.quantity * buy_article.article.price
     end
     return total
   end

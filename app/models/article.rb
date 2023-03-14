@@ -4,3 +4,10 @@ class Article < ApplicationRecord
   has_many :buy_articles
   has_many :buys, through: :buy_articles
 end
+
+def provider_name
+  @provider.each do |provider|
+    name = :provider.name
+  end
+  return name
+end

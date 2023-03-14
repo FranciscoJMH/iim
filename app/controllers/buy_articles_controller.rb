@@ -38,7 +38,7 @@ class BuyArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @buy_article.update(buy_article_params)
-        format.html { redirect_to buy_article_url(@buy_article), notice: "Artículo actualizado." }
+        format.html { redirect_to buy_article_url(@buy_article)}
         format.json { render :show, status: :ok, location: @buy_article }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class BuyArticlesController < ApplicationController
     @buy_article.destroy
 
     respond_to do |format|
-      format.html { redirect_to @buy_article.buy, notice: "Artículo eliminado." }
+      format.html { redirect_to @buy_article.buy}
       format.json { head :no_content }
     end
   end

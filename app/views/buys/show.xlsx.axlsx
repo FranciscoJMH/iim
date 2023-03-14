@@ -1,0 +1,63 @@
+@buy = Buy.find(params[:id])
+
+# Create a new workbook
+wb = xlsx_package.workbook
+
+# Add a worksheet to the workbook
+wb.add_worksheet(name: "Data") do |sheet|
+
+  # Add merged cells for the first row
+  sheet.merge_cells "A1:E1"
+  sheet.merge_cells "A2:E2"
+  sheet.merge_cells "A3:E3"
+  sheet.merge_cells "A4:E4"
+  sheet.merge_cells "A5:E5"
+  sheet.add_row ["INGENIERIA INDUSTRIAL METRO SA DE CV"]
+  sheet.add_row ["IIM19021397A"]
+  sheet.add_row ["VARSOVIA #2007"]
+  sheet.add_row ["MIRADOR C."]
+  sheet.add_row ["CHIHUAS C."]
+
+  sheet.add_style 'A1:A5', sz: 14, b: true, alignment: {horizontal: :center}, bg_color: 'FF0000'
+  sheet.add_row ['','','','FOLIO OC', @buy.id]
+  sheet.add_style 'D6', sz: 14, b: true
+  sheet.add_row ['','','','FECHA', @buy.created_at]
+  sheet.add_style 'D6', sz: 14, b: true
+
+  sheet.add_row [nil,"RAZON SOCIAL:",@buy.buy_articles.first.article.provider.social_reason,"",""]
+  sheet.add_row [nil,"PROVEEDOR:",@buy.buy_articles.first.article.provider.name,"",""]
+  sheet.add_row [nil,"RFC:",@buy.buy_articles.first.article.provider.rfc,"",""]
+  sheet.add_style 'B8:', sz: 14, b: true, bg_color: 'FF0000', alignment: {horizontal: :right}
+  sheet.add_style 'A8:E8', sz: 14, b: true, bg_color: 'FF0000'
+  sheet.add_style 'B9:', sz: 14, b: true, bg_color: 'FF0000', alignment: {horizontal: :right}
+  sheet.add_style 'A9:E9', sz: 14, b: true, bg_color: 'FF0000'
+  sheet.add_style 'B10:', sz: 14, b: true, bg_color: 'FF0000', alignment: {horizontal: :right}
+  sheet.add_style 'A10:E10', sz: 14, b: true, bg_color: 'FF0000'
+
+  sheet.add_row []
+
+  # Add headers
+  sheet.add_row ["CANTIDAD", "UNIDAD", "No.", "P.U.", "IMPORTE"]
+  sheet.add_style 'A12:E12', sz: 14, b: true, bg_color: 'FF0000'
+
+  # Add data rows
+  @buy.buy_articles.each do |buy_article|
+    sheet.add_row [buy_article.quantity, buy_article.article.unit, buy_article.article.name, buy_article.article.price, (buy_article.quantity * buy_article.article.price).round(2)]
+    current_row = sheet.rows.count
+    sheet.add_border "A#{current_row}:E#{current_row}"
+  end
+
+  sheet.add_row [nil,nil,nil,nil, @buy.calculate_total]
+  sheet.add_row []
+  sheet.add_row [nil, 'OBRA', @buy.project.name]
+  current_row = sheet.rows.count + 1
+  sheet.add_style 'B#{current_row}', sz: 14, b: true
+
+  sheet.add_row [nil, 'SOLICITO:', @buy.user.name,'IVA'+ @buy.iva.to_s + '%', @buy.calculate_total]
+  current_row = sheet.rows.count + 1
+  sheet.add_style 'B#{current_row}', sz: 14, b: true
+  sheet.add_style 'D#{current_row}', sz: 14, b: true
+  current_row = sheet.rows.count + 1
+  sheet.add_row [nil,nil,nil,'TOTAL', '$' + @total.to_s]
+  sheet.add_style 'D#{current_row}', sz: 14, b: true
+end
