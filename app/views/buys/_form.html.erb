@@ -1,30 +1,32 @@
-<%= form_with(model: buy) do |form| %>
-  <% if buy.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(buy.errors.count, "error") %> prohibited this buy from being saved:</h2>
+<div class="container-fluid">
+  <div class="row">
+    <%= form_with(model: buy) do |form| %>
+      <% if buy.errors.any? %>
+        <div style="color: red">
+          <h2>Favor de seleccionar una obra.</h2>
+        </div>
+      <% end %>
 
-      <ul>
-        <% buy.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :iva, style: "display: block" %>
-    <%= form.text_field :iva, class: 'form-control' %>
+      <table class="table">
+        <tb>
+          <th>
+            <div class="col">
+              <%= form.label :Proyecto_de_construcción, style: "display: block",class:"m-2" %>
+              <%= form.collection_select(:project_id, Project.all, :id, :name, { prompt: 'Seleccione Obra'}, { class: 'form-control' }) %>
+            </div>
+          </th>
+          <th>
+            <div class="col">
+              <%= form.label :iva, style: "display: block", class:"m-2" %>
+              <%= form.text_field :iva, class: 'form-control' %>
+            </div>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+          </th>
+        </tb>
+    </table>
+            <div>
+              <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+            </div>
+    <% end %>
   </div>
-
-  <div>
-    <%= form.label :project_id, style: "display: block" %>
-    <%= form.collection_select(:project_id, Project.all, :id, :name, { prompt: 'Seleccione Obra'}, { class: 'form-control' }) %>
-
-  </div>
-
-  <%= form.hidden_field :user_id, value: current_user.id %>
-
-  <div>
-    <%= form.submit 'Guardar', class: 'btn btn-primary' %>
-  </div>
-<% end %>
+</div>

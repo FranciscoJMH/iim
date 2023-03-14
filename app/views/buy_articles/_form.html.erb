@@ -1,7 +1,7 @@
 <%= form_with(model: buy_article) do |form| %>
   <% if buy_article.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(buy_article.errors.count, "error") %> prohibited this buy_article from being saved:</h2>
+      <h2><%= pluralize(buy_article.errors.count, "Error") %> revise los campos:</h2>
 
       <ul>
         <% buy_article.errors.each do |error| %>

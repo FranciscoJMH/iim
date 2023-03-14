@@ -9,13 +9,10 @@ class BuysController < ApplicationController
   # GET /buys/1 or /buys/1.json
   def show
     @buy_article = BuyArticle.new
-    @total = 0
-    @buy.buy_articles.each do |buy_article|
-      @total += buy_article.quantity * buy_article.article.price
-    end
+    @total = @buy.calculate_total
 
     @iva = @total * (@buy.iva / 100)
-    @total = @total * (100  + @buy.iva)/100.0
+    @total = @total * (100  + @buy.iva) || 0/100.0
   end
 
   # GET /buys/new
@@ -33,7 +30,7 @@ class BuysController < ApplicationController
 
     respond_to do |format|
       if @buy.save
-        format.html { redirect_to buy_url(@buy), notice: "Buy was successfully created." }
+        format.html { redirect_to buy_url(@buy), notice: "Creado correctamente." }
         format.json { render :show, status: :created, location: @buy }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -46,7 +43,7 @@ class BuysController < ApplicationController
   def update
     respond_to do |format|
       if @buy.update(buy_params)
-        format.html { redirect_to buy_url(@buy), notice: "Buy was successfully updated." }
+        format.html { redirect_to buy_url(@buy), notice: "Actualizado correctamente." }
         format.json { render :show, status: :ok, location: @buy }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,7 +57,7 @@ class BuysController < ApplicationController
     @buy.destroy
 
     respond_to do |format|
-      format.html { redirect_to buys_url, notice: "Buy was successfully destroyed." }
+      format.html { redirect_to buys_url, notice: "Eliminado correctamente." }
       format.json { head :no_content }
     end
   end

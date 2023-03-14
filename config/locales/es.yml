@@ -29,6 +29,14 @@ es:
       user:
         one: Usuario
         other: Usuarios
+    errors:
+      models:
+        buy_article:
+          attributes:
+            article:
+              required: error; elija el artículo.
+            quantity:
+              blank: escriba una cantidad.
   devise:
     confirmations:
       confirmed: Tu cuenta ha sido confirmada satisfactoriamente.
