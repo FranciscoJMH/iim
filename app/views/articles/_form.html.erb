@@ -11,26 +11,28 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
+  <h4>
+    <div>
+    <%= form.label :Nombre, style: "display: block" %>
     <%= form.text_field :name, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :unit, style: "display: block" %>
+    <%= form.label :Unidad, style: "display: block" %>
     <%= form.text_field :unit, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :price, style: "display: block" %>
+    <%= form.label :Precio, style: "display: block" %>
     <%= form.text_field :price, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :provider_id, style: "display: block" %>
+    <%= form.label :Proveedor, style: "display: block" %>
     <%= form.collection_select(:provider_id, Provider.all, :id, :name, { prompt: 'Seleccione Proveedor'}, { class: 'form-control' }) %>
-
   </div>
+  </h4>
+  <br>
 
   <div>
     <%= form.submit 'Guardar', class: 'btn btn-primary' %>

@@ -127,11 +127,12 @@
   </div>
 </div>
 
-      <div align="right">
+      <div class="row justify-content-between">
+    <h3 class="col-4">Solicitó: <%= @buy.user.name %></h3>
+      <div class="col-4" align="right">
         <h3>IVA <%= @buy.iva %> %: <%= @iva.round(2) %></h3>
         <h3>Total: <%= @total %></h3>
       </div>
-    <h3 class="col" align="left">Solicitó: <%= @buy.user.name %></h3>
 <div>
   <%= button_to "Eliminar", @buy, method: :delete, turbo_confirm: 'Estas seguro que quieres eliminarlo?' %>
 </div>
