@@ -13,11 +13,12 @@
 
   <div>
     <%= form.label 'Nombre', style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
+  <br>
+
   <div>
-    <%= form.label 'Guardar'%>
-    <%= form.submit class: 'btn btn-primary'%>
+    <%= form.submit 'Guardar', class: 'btn btn-primary'%>
   </div>
 <% end %>
