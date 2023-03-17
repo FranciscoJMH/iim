@@ -15,30 +15,34 @@ wb.add_worksheet(name: "Data") do |sheet|
   sheet.add_row ["INGENIERIA INDUSTRIAL METRO SA DE CV"]
   sheet.add_row ["IIM19021397A"]
   sheet.add_row ["VARSOVIA #2007"]
-  sheet.add_row ["MIRADOR C."]
-  sheet.add_row ["CHIHUAS C."]
+  sheet.add_row ["MIRADOR C.P. 31205"]
+  sheet.add_row ["CHIHUAHUA, CHIH"]
+  sheet.add_style 'A1:A5', sz: 14, b: true, alignment: {horizontal: :center}, bg_color: 'EFEFEF'
 
-  sheet.add_style 'A1:A5', sz: 14, b: true, alignment: {horizontal: :center}, bg_color: 'FF0000'
   sheet.add_row ['','','','FOLIO OC', @buy.id]
   sheet.add_style 'D6', sz: 14, b: true
   sheet.add_row ['','','','FECHA', @buy.created_at]
   sheet.add_style 'D6', sz: 14, b: true
+  sheet.add_border "D6:E6"
+  sheet.add_border "D7:E7"
+
 
   sheet.add_row [nil,"RAZON SOCIAL:",@buy.buy_articles.first.article.provider.social_reason,"",""]
   sheet.add_row [nil,"PROVEEDOR:",@buy.buy_articles.first.article.provider.name,"",""]
   sheet.add_row [nil,"RFC:",@buy.buy_articles.first.article.provider.rfc,"",""]
-  sheet.add_style 'B8:', sz: 14, b: true, bg_color: 'FF0000', alignment: {horizontal: :right}
-  sheet.add_style 'A8:E8', sz: 14, b: true, bg_color: 'FF0000'
-  sheet.add_style 'B9:', sz: 14, b: true, bg_color: 'FF0000', alignment: {horizontal: :right}
-  sheet.add_style 'A9:E9', sz: 14, b: true, bg_color: 'FF0000'
-  sheet.add_style 'B10:', sz: 14, b: true, bg_color: 'FF0000', alignment: {horizontal: :right}
-  sheet.add_style 'A10:E10', sz: 14, b: true, bg_color: 'FF0000'
+  sheet.add_style 'B8:', sz: 14, b: true, bg_color: 'F9DDCB', alignment: {horizontal: :right}
+  sheet.add_style 'A8:E8', sz: 14, b: true, bg_color: 'F9DDCB'
+  sheet.add_style 'B9:', sz: 14, b: true, bg_color: 'F9DDCB', alignment: {horizontal: :right}
+  sheet.add_style 'A9:E9', sz: 14, b: true, bg_color: 'F9DDCB'
+  sheet.add_style 'B10:', sz: 14, b: true, bg_color: 'F9DDCB', alignment: {horizontal: :right}
+  sheet.add_style 'A10:E10', sz: 14, b: true, bg_color: 'F9DDCB'
 
   sheet.add_row []
 
   # Add headers
   sheet.add_row ["CANTIDAD", "UNIDAD", "No.", "P.U.", "IMPORTE"]
-  sheet.add_style 'A12:E12', sz: 14, b: true, bg_color: 'FF0000'
+  sheet.add_style 'A12:E12', sz: 14, b: true, bg_color: 'F9DDCB'
+  sheet.add_border "A12:E12"
 
   # Add data rows
   @buy.buy_articles.each do |buy_article|
@@ -49,15 +53,15 @@ wb.add_worksheet(name: "Data") do |sheet|
 
   sheet.add_row [nil,nil,nil,nil, @buy.calculate_total]
   sheet.add_row []
-  sheet.add_row [nil, 'OBRA', @buy.project.name]
+  sheet.add_row [nil, 'OBRA:', @buy.project.name]
   current_row = sheet.rows.count + 1
-  sheet.add_style 'B#{current_row}', sz: 14, b: true
+  sheet.add_style 'B#{current_row}', sz: 14, b: true, alignment: {horizontal: :right}
 
-  sheet.add_row [nil, 'SOLICITO:', @buy.user.name,'IVA'+ @buy.iva.to_s + '%', @buy.calculate_total]
+  sheet.add_row [nil, 'SOLICITO:', @buy.user.name,'IVA ' '$'+ @buy.iva.to_s + '%', @buy.calculate_total*0.16]
   current_row = sheet.rows.count + 1
-  sheet.add_style 'B#{current_row}', sz: 14, b: true
-  sheet.add_style 'D#{current_row}', sz: 14, b: true
+  sheet.add_style 'B#{current_row}', sz: 14, b: true, alignment: {horizontal: :right}
+  sheet.add_style 'D#{current_row}', sz: 14, b: true, alignment: {horizontal: :right}
   current_row = sheet.rows.count + 1
   sheet.add_row [nil,nil,nil,'TOTAL', '$' + @total.to_s]
-  sheet.add_style 'D#{current_row}', sz: 14, b: true
+  sheet.add_style 'D#{current_row}', sz: 14, b: true, alignment: {horizontal: :right}
 end

@@ -6,6 +6,11 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
+  def index
+    @articles = Article.includes(:provider).order('providers.name ASC')
+  end
+
+
   # GET /articles/1 or /articles/1.json
   def show
   end

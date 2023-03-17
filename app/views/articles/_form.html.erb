@@ -29,7 +29,7 @@
 
   <div>
     <%= form.label :Proveedor, style: "display: block" %>
-    <%= form.collection_select(:provider_id, Provider.all, :id, :name, { prompt: 'Seleccione Proveedor'}, { class: 'form-control' }) %>
+    <%= form.collection_select(:provider_id, Provider.all, :id, :social_reason, { prompt: 'Seleccione Proveedor'}, { class: 'form-control' }) %>
   </div>
   </h4>
   <br>
