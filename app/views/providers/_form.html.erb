@@ -11,32 +11,36 @@
     </div>
   <% end %>
 
+  <h4>
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :Nombre, style: "display: block" %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :social_reason, style: "display: block" %>
-    <%= form.text_field :social_reason %>
+    <%= form.label :Razón_Social, style: "display: block" %>
+    <%= form.text_field :social_reason, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :rfc, style: "display: block" %>
-    <%= form.text_field :rfc %>
+    <%= form.label :RFC, style: "display: block" %>
+    <%= form.text_field :rfc, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :telephone, style: "display: block" %>
-    <%= form.text_field :telephone %>
+    <%= form.label :Teléfono, style: "display: block" %>
+    <%= form.text_field :telephone, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+    <%= form.label :Email, style: "display: block" %>
+    <%= form.text_field :email, class: 'form-control' %>
   </div>
+  </h4>
+
+  <br>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit 'Guardar', class: "btn btn-primary" %>
   </div>
 <% end %>

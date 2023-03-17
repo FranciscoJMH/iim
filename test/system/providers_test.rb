@@ -16,12 +16,12 @@ class ProvidersTest < ApplicationSystemTestCase
 
     fill_in "Email", with: @provider.email
     fill_in "Name", with: @provider.name
-    fill_in "Rfc", with: @provider.rfc
+    fill_in "RFC", with: @provider.rfc
     fill_in "Social reason", with: @provider.social_reason
     fill_in "Telephone", with: @provider.telephone
-    click_on "Create Provider"
+    click_on "Crear Proveedor"
 
-    assert_text "Provider was successfully created"
+    assert_text "Proveedor creado."
     click_on "Back"
   end
 
