@@ -19,7 +19,7 @@
 
   <div>
     <%= form.label :Unidad, style: "display: block" %>
-    <%= form.text_field :unit, class: 'form-control' %>
+    <%= form.select :unit, options_for_select(['mto', 'pza']), { prompt: 'Seleccione una opción' }, class: 'form-control' %>
   </div>
 
   <div>

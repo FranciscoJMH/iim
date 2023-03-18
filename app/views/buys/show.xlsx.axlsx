@@ -21,7 +21,7 @@ wb.add_worksheet(name: "Data") do |sheet|
 
   sheet.add_row ['','','','FOLIO OC', @buy.id]
   sheet.add_style 'D6', sz: 14, b: true
-  sheet.add_row ['','','','FECHA', @buy.created_at]
+  sheet.add_row ['','','','FECHA', @buy.created_at.strftime('%d/%m/%Y')]
   sheet.add_style 'D6', sz: 14, b: true
   sheet.add_border "D6:E6"
   sheet.add_border "D7:E7"
@@ -57,7 +57,7 @@ wb.add_worksheet(name: "Data") do |sheet|
   current_row = sheet.rows.count + 1
   sheet.add_style 'B#{current_row}', sz: 14, b: true, alignment: {horizontal: :right}
 
-  sheet.add_row [nil, 'SOLICITO:', @buy.user.name,'IVA ' '$'+ @buy.iva.to_s + '%', @buy.calculate_total*0.16]
+  sheet.add_row [nil, 'SOLICITÓ:', @buy.user.name,'IVA ' + @buy.iva.to_s + '%', + @buy.calculate_total*0.16]
   current_row = sheet.rows.count + 1
   sheet.add_style 'B#{current_row}', sz: 14, b: true, alignment: {horizontal: :right}
   sheet.add_style 'D#{current_row}', sz: 14, b: true, alignment: {horizontal: :right}
