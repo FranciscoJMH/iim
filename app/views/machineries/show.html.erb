@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @machinery %>
+
+<div>
+  <%= link_to "Edit this machinery", edit_machinery_path(@machinery) %> |
+  <%= link_to "Back to machineries", machineries_path %>
+
+  <%= button_to "Destroy this machinery", @machinery, method: :delete %>
+</div>

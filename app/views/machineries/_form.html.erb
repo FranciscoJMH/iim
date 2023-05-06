@@ -1,0 +1,72 @@
+<%= form_with(model: machinery) do |form| %>
+  <% if machinery.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(machinery.errors.count, "error") %> prohibited this machinery from being saved:</h2>
+
+      <ul>
+        <% machinery.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :number, style: "display: block" %>
+    <%= form.number_field :number %>
+  </div>
+
+  <div>
+    <%= form.label :code, style: "display: block" %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div>
+    <%= form.label :type, style: "display: block" %>
+    <%= form.text_field :type %>
+  </div>
+
+  <div>
+    <%= form.label :characteristics, style: "display: block" %>
+    <%= form.text_area :characteristics %>
+  </div>
+
+  <div>
+    <%= form.label :cost_iva, style: "display: block" %>
+    <%= form.text_field :cost_iva %>
+  </div>
+
+  <div>
+    <%= form.label :freight, style: "display: block" %>
+    <%= form.text_field :freight %>
+  </div>
+
+  <div>
+    <%= form.label :init_date, style: "display: block" %>
+    <%= form.date_field :init_date %>
+  </div>
+
+  <div>
+    <%= form.label :renovation_date, style: "display: block" %>
+    <%= form.date_field :renovation_date %>
+  </div>
+
+  <div>
+    <%= form.label :note, style: "display: block" %>
+    <%= form.text_area :note %>
+  </div>
+
+  <div>
+    <%= form.label :provider_id, style: "display: block" %>
+    <%= form.text_field :provider_id %>
+  </div>
+
+  <div>
+    <%= form.label :enterprise_id, style: "display: block" %>
+    <%= form.text_field :enterprise_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

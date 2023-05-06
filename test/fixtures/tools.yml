@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  brand: MyString
+  caliber: 1.5
+  characteristics: MyText
+  buying_date: 2023-05-06
+  ingress_date: 2023-05-06
+  enterprise: one
+
+two:
+  description: MyText
+  brand: MyString
+  caliber: 1.5
+  characteristics: MyText
+  buying_date: 2023-05-06
+  ingress_date: 2023-05-06
+  enterprise: two

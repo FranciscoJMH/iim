@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_12_012951) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_06_225740) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,32 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_12_012951) do
     t.index ["user_id"], name: "index_buys_on_user_id"
   end
 
+  create_table "enterprises", force: :cascade do |t|
+    t.string "name"
+    t.bigint "responsible_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["responsible_id"], name: "index_enterprises_on_responsible_id"
+  end
+
+  create_table "machineries", force: :cascade do |t|
+    t.integer "number"
+    t.string "code"
+    t.string "type"
+    t.text "characteristics"
+    t.float "cost_iva"
+    t.float "freight"
+    t.date "init_date"
+    t.date "renovation_date"
+    t.text "note"
+    t.bigint "provider_id", null: false
+    t.bigint "enterprise_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enterprise_id"], name: "index_machineries_on_enterprise_id"
+    t.index ["provider_id"], name: "index_machineries_on_provider_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -60,6 +86,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_12_012951) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "responsibles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tools", force: :cascade do |t|
+    t.text "description"
+    t.string "brand"
+    t.float "caliber"
+    t.text "characteristics"
+    t.date "buying_date"
+    t.date "ingress_date"
+    t.bigint "enterprise_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enterprise_id"], name: "index_tools_on_enterprise_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,4 +125,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_12_012951) do
   add_foreign_key "buy_articles", "buys"
   add_foreign_key "buys", "projects"
   add_foreign_key "buys", "users"
+  add_foreign_key "enterprises", "responsibles"
+  add_foreign_key "machineries", "enterprises"
+  add_foreign_key "machineries", "providers"
+  add_foreign_key "tools", "enterprises"
 end

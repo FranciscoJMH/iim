@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_scope :user do
+  resources :tools
+  resources :machineries
+  resources :enterprises
+  resources :responsibles
+    devise_scope :user do
     devise_for :users, controllers: {
       registrations: 'users/registrations'
     }
@@ -13,7 +17,7 @@ Rails.application.routes.draw do
       resources :projects
       resources :providers
       resources :buy_articles
-    end
+        end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
