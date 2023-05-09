@@ -25,7 +25,7 @@ class ResponsiblesController < ApplicationController
 
     respond_to do |format|
       if @responsible.save
-        format.html { redirect_to responsible_url(@responsible), notice: "Responsible was successfully created." }
+        format.html { redirect_to responsible_url(@responsible), notice: "Responsable creado correctamente." }
         format.json { render :show, status: :created, location: @responsible }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class ResponsiblesController < ApplicationController
   def update
     respond_to do |format|
       if @responsible.update(responsible_params)
-        format.html { redirect_to responsible_url(@responsible), notice: "Responsible was successfully updated." }
+        format.html { redirect_to responsible_url(@responsible), notice: "Responsable modificado correctamente." }
         format.json { render :show, status: :ok, location: @responsible }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class ResponsiblesController < ApplicationController
     @responsible.destroy
 
     respond_to do |format|
-      format.html { redirect_to responsibles_url, notice: "Responsible was successfully destroyed." }
+      format.html { redirect_to responsibles_url, notice: "Responsable eliminado correctamente." }
       format.json { head :no_content }
     end
   end
