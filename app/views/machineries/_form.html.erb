@@ -1,7 +1,7 @@
 <%= form_with(model: machinery) do |form| %>
   <% if machinery.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(machinery.errors.count, "error") %> prohibited this machinery from being saved:</h2>
+      <h2><%= pluralize(machinery.errors.count, "error") %> no se puede crear esta maquinaria</h2>
 
       <ul>
         <% machinery.errors.each do |error| %>

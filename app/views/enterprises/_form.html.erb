@@ -1,7 +1,7 @@
 <%= form_with(model: enterprise) do |form| %>
   <% if enterprise.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(enterprise.errors.count, "error") %> prohibited this enterprise from being saved:</h2>
+      <h2><%= pluralize(enterprise.errors.count, "error") %> no se puede crear esta empresa:</h2>
 
       <ul>
         <% enterprise.errors.each do |error| %>
@@ -11,8 +11,9 @@
     </div>
   <% end %>
 
+  <h4>
   <div>
-    <%= form.label :name, style: "display: block" %>
+    <%= form.label :Nombre, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
@@ -20,6 +21,8 @@
     <%= form.label :responsible_id, style: "display: block" %>
     <%= form.text_field :responsible_id %>
   </div>
+  </h4>
+  <br>
 
   <div>
     <%= form.submit %>
