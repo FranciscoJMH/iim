@@ -18,8 +18,8 @@
   </div>
 
   <div>
-    <%= form.label :responsible_id, style: "display: block" %>
-    <%= form.text_field :responsible_id %>
+    <%= form.label :Responsable, style: "display: block",class:"m-2" %>
+    <%= form.collection_select(:responsible_id, Responsible.all, :id, :name, { prompt: 'Seleccione Responsable'}, { class: 'form-control' }) %>
   </div>
   </h4>
   <br>
