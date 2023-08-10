@@ -1,57 +1,28 @@
-<div id="<%= dom_id machinery %>">
-  <p>
-    <strong>Number:</strong>
-    <%= machinery.number %>
-  </p>
-
-  <p>
-    <strong>Code:</strong>
-    <%= machinery.code %>
-  </p>
-
-  <p>
-    <strong>Type:</strong>
-    <%= machinery.type %>
-  </p>
-
-  <p>
-    <strong>Characteristics:</strong>
-    <%= machinery.characteristics %>
-  </p>
-
-  <p>
-    <strong>Cost iva:</strong>
-    <%= machinery.cost_iva %>
-  </p>
-
-  <p>
-    <strong>Freight:</strong>
-    <%= machinery.freight %>
-  </p>
-
-  <p>
-    <strong>Init date:</strong>
-    <%= machinery.init_date %>
-  </p>
-
-  <p>
-    <strong>Renovation date:</strong>
-    <%= machinery.renovation_date %>
-  </p>
-
-  <p>
-    <strong>Note:</strong>
-    <%= machinery.note %>
-  </p>
-
-  <p>
-    <strong>Provider:</strong>
-    <%= machinery.provider_id %>
-  </p>
-
-  <p>
-    <strong>Enterprise:</strong>
-    <%= machinery.enterprise_id %>
-  </p>
-
-</div>
+<section>
+  <div class="container">
+    <div class="box">
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th colspan="11"><h2>Información de la Maquinaria</h2></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="<%= dom_id machinery %>">
+            <td><strong>Número:</strong><br><%= machinery.number %></td>
+            <td><strong>Código:</strong><br><%= machinery.code %></td>
+            <td><strong>Tipo:</strong><br><%= machinery.machine_type %></td>
+            <td><strong>Características:</strong><br><%= machinery.characteristics %></td>
+            <td><strong>Costo IVA:</strong><br><%= machinery.cost_iva %></td>
+            <td><strong>Flete:</strong><br><%= machinery.freight %></td>
+            <td><strong>Fecha de inicio de renta:</strong><br><%= machinery.init_date %></td>
+            <td><strong>Fecha de próxima renovación:</strong><br><%= machinery.renovation_date %></td>
+            <td><strong>Nota:</strong><br><%= machinery.note %></td>
+            <td><strong>Proveedor:</strong><br><%= machinery.provider_id %></td>
+            <td><strong>Empresa:</strong><br><%= machinery.enterprise_id %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

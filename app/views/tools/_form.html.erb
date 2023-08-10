@@ -1,7 +1,7 @@
 <%= form_with(model: tool) do |form| %>
   <% if tool.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(tool.errors.count, "error") %> prohibited this tool from being saved:</h2>
+      <h2><%= pluralize(tool.errors.count, "error") %> No se puede crear esta herramienta</h2>
 
       <ul>
         <% tool.errors.each do |error| %>
@@ -12,41 +12,42 @@
   <% end %>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+    <%= form.label :Descripción, style: "display: block" %>
+    <%= form.text_area :description, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :brand, style: "display: block" %>
-    <%= form.text_field :brand %>
+    <%= form.label :Marca, style: "display: block" %>
+    <%= form.text_field :brand, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :caliber, style: "display: block" %>
-    <%= form.text_field :caliber %>
+    <%= form.label :Calibre, style: "display: block" %>
+    <%= form.text_field :caliber, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :characteristics, style: "display: block" %>
-    <%= form.text_area :characteristics %>
+    <%= form.label :Características, style: "display: block" %>
+    <%= form.text_area :characteristics, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :buying_date, style: "display: block" %>
-    <%= form.date_field :buying_date %>
+    <%= form.label :Fecha_de_Compra, style: "display: block" %>
+    <%= form.date_field :buying_date, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :ingress_date, style: "display: block" %>
-    <%= form.date_field :ingress_date %>
+    <%= form.label :Fecha_de_Ingreso, style: "display: block" %>
+    <%= form.date_field :ingress_date, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :enterprise_id, style: "display: block" %>
-    <%= form.text_field :enterprise_id %>
+    <%= form.label :Empresa, style: "display: block",class:"m-2" %>
+            <%= form.collection_select(:enterprise_id, Enterprise.all, :id, :name, { prompt: 'Seleccione una Empresa'}, { class: 'form-control' }) %>
   </div>
 
+  <br>
   <div>
-    <%= form.submit %>
-  </div>
+      <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+    </div>
 <% end %>

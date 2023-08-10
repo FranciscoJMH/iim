@@ -12,61 +12,73 @@
   <% end %>
 
   <div>
-    <%= form.label :number, style: "display: block" %>
-    <%= form.number_field :number %>
+    <%= form.label :Número, style: "display: block" %>
+    <%= form.number_field :number, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :code, style: "display: block" %>
-    <%= form.text_field :code %>
+    <%= form.label :Código, style: "display: block" %>
+    <%= form.text_field :code, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :type, style: "display: block" %>
-    <%= form.text_field :type %>
+    <%= form.label :Tipo, style: "display: block" %>
+    <%= form.text_field :machine_type, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :characteristics, style: "display: block" %>
-    <%= form.text_area :characteristics %>
+    <%= form.label :Características, style: "display: block" %>
+    <%= form.text_area :characteristics, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :cost_iva, style: "display: block" %>
-    <%= form.text_field :cost_iva %>
+    <%= form.label :Costo_IVA, style: "display: block" %>
+    <%= form.text_field :cost_iva, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :freight, style: "display: block" %>
-    <%= form.text_field :freight %>
+    <%= form.label :Flete, style: "display: block" %>
+    <%= form.text_field :freight, class: 'form-control' %>
+  </div>
+
+  <div class="date-field">
+      <%= form.label :Fecha_de_inicio_de_renta, style: "display: block" %>
+      <%= form.date_field :init_date, class: 'form-control' %>
+    </div>
+
+  <div>
+    <%= form.label :Fecha_de_proxima_renovación, style: "display: block" %>
+   <%= form.date_field :init_date, class: 'form-control'%>
   </div>
 
   <div>
-    <%= form.label :init_date, style: "display: block" %>
-    <%= form.date_field :init_date %>
+    <%= form.label :Nota, style: "display: block" %>
+    <%= form.text_area :note, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :renovation_date, style: "display: block" %>
-    <%= form.date_field :renovation_date %>
+    <%= form.label :Proveedor, style: "display: block",class:"m-2" %>
+        <%= form.collection_select(:provider_id, Provider.all, :id, :name, { prompt: 'Seleccione Proveedor'}, { class: 'form-control' }) %>
   </div>
 
   <div>
-    <%= form.label :note, style: "display: block" %>
-    <%= form.text_area :note %>
+    <%= form.label :Empresa, style: "display: block",class:"m-2" %>
+        <%= form.collection_select(:enterprise_id, Enterprise.all, :id, :name, { prompt: 'Seleccione Empresa'}, { class: 'form-control' }) %>
   </div>
 
+  <br>
   <div>
-    <%= form.label :provider_id, style: "display: block" %>
-    <%= form.text_field :provider_id %>
-  </div>
-
-  <div>
-    <%= form.label :enterprise_id, style: "display: block" %>
-    <%= form.text_field :enterprise_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit 'Guardar', class: 'btn btn-primary' %>
   </div>
 <% end %>
+
+
+<style>
+.date-field input[type="date"]::before {
+content: attr(value);
+display: inline-block;
+color: #000; /* Color del texto */
+font-weight: normal;
+/* Estilos adicionales aquí según tus preferencias */
+       }
+</style>

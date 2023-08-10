@@ -25,7 +25,7 @@ class MachineriesController < ApplicationController
 
     respond_to do |format|
       if @machinery.save
-        format.html { redirect_to machinery_url(@machinery), notice: "Machinery was successfully created." }
+        format.html { redirect_to machinery_url(@machinery), notice: "Maquinaria creada correctamente." }
         format.json { render :show, status: :created, location: @machinery }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class MachineriesController < ApplicationController
   def update
     respond_to do |format|
       if @machinery.update(machinery_params)
-        format.html { redirect_to machinery_url(@machinery), notice: "Machinery was successfully updated." }
+        format.html { redirect_to machinery_url(@machinery), notice: "Maquinaria modificada correctamente." }
         format.json { render :show, status: :ok, location: @machinery }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class MachineriesController < ApplicationController
     @machinery.destroy
 
     respond_to do |format|
-      format.html { redirect_to machineries_url, notice: "Machinery was successfully destroyed." }
+      format.html { redirect_to machineries_url, notice: "Maquinaria eliminada correctamente." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +65,6 @@ class MachineriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def machinery_params
-      params.require(:machinery).permit(:number, :code, :type, :characteristics, :cost_iva, :freight, :init_date, :renovation_date, :note, :provider_id, :enterprise_id)
+      params.require(:machinery).permit(:number, :code, :machine_type, :characteristics, :cost_iva, :freight, :init_date, :renovation_date, :note, :provider_id, :enterprise_id)
     end
 end
