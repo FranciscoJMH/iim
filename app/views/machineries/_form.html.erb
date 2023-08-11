@@ -41,14 +41,14 @@
     <%= form.text_field :freight, class: 'form-control' %>
   </div>
 
-  <div class="date-field">
+  <div>
       <%= form.label :Fecha_de_inicio_de_renta, style: "display: block" %>
       <%= form.date_field :init_date, class: 'form-control' %>
-    </div>
+  </div>
 
   <div>
     <%= form.label :Fecha_de_proxima_renovación, style: "display: block" %>
-   <%= form.date_field :init_date, class: 'form-control'%>
+    <%= form.date_field :renovation_date, class: 'form-control'%>
   </div>
 
   <div>
@@ -71,14 +71,3 @@
     <%= form.submit 'Guardar', class: 'btn btn-primary' %>
   </div>
 <% end %>
-
-
-<style>
-.date-field input[type="date"]::before {
-content: attr(value);
-display: inline-block;
-color: #000; /* Color del texto */
-font-weight: normal;
-/* Estilos adicionales aquí según tus preferencias */
-       }
-</style>
