@@ -66,6 +66,17 @@
         <%= form.collection_select(:enterprise_id, Enterprise.all, :id, :name, { prompt: 'Seleccione Empresa'}, { class: 'form-control' }) %>
   </div>
 
+  <div>
+    <%= form.label :Días_de_diferencia, style: "display: block" %>
+    <% if machinery.init_date && machinery.renovation_date %>
+      <% days_difference = (machinery.renovation_date - machinery.init_date).to_i %>
+      <%= form.text_field :days_difference, value: days_difference, class: "form-control #{bg_class}", readonly: true %>
+    <% else %>
+      <%= form.text_field :days_difference, class: 'form-control', readonly: true %>
+    <% end %>
+  </div>
+
+
   <br>
   <div>
     <%= form.submit 'Guardar', class: 'btn btn-primary' %>
