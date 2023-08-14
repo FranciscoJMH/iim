@@ -33,12 +33,12 @@
 
   <div>
     <%= form.label :Costo_IVA, style: "display: block" %>
-    <%= form.text_field :cost_iva, class: 'form-control' %>
+    <%= form.text_field :cost_iva, class: 'form-control', type: :number %>
   </div>
 
   <div>
     <%= form.label :Flete, style: "display: block" %>
-    <%= form.text_field :freight, class: 'form-control' %>
+    <%= form.text_field :freight, class: 'form-control', type: :number %>
   </div>
 
   <div>
@@ -70,12 +70,11 @@
     <%= form.label :Días_de_diferencia, style: "display: block" %>
     <% if machinery.init_date && machinery.renovation_date %>
       <% days_difference = (machinery.renovation_date - machinery.init_date).to_i %>
-      <%= form.text_field :days_difference, value: days_difference, class: "form-control #{bg_class}", readonly: true %>
+      <%= form.text_field :days_difference, value: days_difference, class: "form-control", readonly: true, placeholder: 'Días se asignan automáticamente' %>
     <% else %>
-      <%= form.text_field :days_difference, class: 'form-control', readonly: true %>
+      <%= form.text_field :days_difference, class: 'form-control', readonly: true, placeholder: 'Días se asignan automáticamente' %>
     <% end %>
   </div>
-
 
   <br>
   <div>

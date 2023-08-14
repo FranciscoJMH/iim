@@ -3,5 +3,5 @@ class Machinery < ApplicationRecord
   belongs_to :enterprise
 
   attr_accessor :days_difference
-  validates :number, presence: true
+  validates :number, presence: true, uniqueness: true
 end
