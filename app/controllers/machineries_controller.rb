@@ -3,7 +3,7 @@ class MachineriesController < ApplicationController
 
   # GET /machineries or /machineries.json
   def index
-      @machineries = Machinery.all 
+      @machineries = Machinery.all
 
       @machineries.each do |machinery|
         if machinery.init_date && machinery.renovation_date
