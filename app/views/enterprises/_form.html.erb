@@ -1,0 +1,30 @@
+<%= form_with(model: enterprise) do |form| %>
+  <% if enterprise.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(enterprise.errors.count, "error") %> no se puede crear esta empresa:</h2>
+
+      <ul>
+        <% enterprise.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h4>
+  <div>
+    <%= form.label :Nombre, style: "display: block" %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :Responsable, style: "display: block",class:"m-2" %>
+    <%= form.collection_select(:responsible_id, Responsible.all, :id, :name, { prompt: 'Seleccione Responsable'}, { class: 'form-control' }) %>
+  </div>
+  </h4>
+  <br>
+
+  <div>
+    <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+  </div>
+<% end %>

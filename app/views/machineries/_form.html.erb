@@ -1,0 +1,83 @@
+<%= form_with(model: machinery) do |form| %>
+  <% if machinery.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(machinery.errors.count, "error") %> no se puede crear esta maquinaria</h2>
+
+      <ul>
+        <% machinery.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :Número, style: "display: block" %>
+    <%= form.number_field :number, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :Código, style: "display: block" %>
+    <%= form.text_field :code, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :Tipo, style: "display: block" %>
+    <%= form.text_field :machine_type, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :Características, style: "display: block" %>
+    <%= form.text_area :characteristics, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :Costo_IVA, style: "display: block" %>
+    <%= form.text_field :cost_iva, class: 'form-control', type: :number %>
+  </div>
+
+  <div>
+    <%= form.label :Flete, style: "display: block" %>
+    <%= form.text_field :freight, class: 'form-control', type: :number %>
+  </div>
+
+  <div>
+      <%= form.label :Fecha_de_inicio_de_renta, style: "display: block" %>
+      <%= form.date_field :init_date, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :Fecha_de_proxima_renovación, style: "display: block" %>
+    <%= form.date_field :renovation_date, class: 'form-control'%>
+  </div>
+
+  <div>
+    <%= form.label :Nota, style: "display: block" %>
+    <%= form.text_area :note, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :Proveedor, style: "display: block",class:"m-2" %>
+        <%= form.collection_select(:provider_id, Provider.all, :id, :name, { prompt: 'Seleccione Proveedor'}, { class: 'form-control' }) %>
+  </div>
+
+ <div>
+   <%= form.label :Empresa, style: "display: block", class: "m-2" %>
+   <%= form.text_field :selected_enterprise_name, class: 'form-control', readonly: true, id: 'selected-enterprise-name-field' %>
+ </div>
+
+  <div>
+    <%= form.label :Días_de_diferencia, style: "display: block" %>
+    <% if machinery.init_date && machinery.renovation_date %>
+      <% days_difference = (machinery.renovation_date - machinery.init_date).to_i %>
+      <%= form.text_field :days_difference, value: days_difference, class: "form-control", readonly: true, placeholder: 'Días se asignan automáticamente' %>
+    <% else %>
+      <%= form.text_field :days_difference, class: 'form-control', readonly: true, placeholder: 'Días se asignan automáticamente' %>
+    <% end %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+  </div>
+<% end %>

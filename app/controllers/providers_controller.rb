@@ -38,7 +38,7 @@ class ProvidersController < ApplicationController
   def update
     respond_to do |format|
       if @provider.update(provider_params)
-        format.html { redirect_to provider_url(@provider), notice: "Proveedor modificado." }
+        format.html { redirect_to provider_url(@provider), notice: "Proveedor modificado correctamente." }
         format.json { render :show, status: :ok, location: @provider }
       else
         format.html { render :edit, status: :unprocessable_entity }

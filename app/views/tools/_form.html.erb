@@ -1,0 +1,53 @@
+<%= form_with(model: tool) do |form| %>
+  <% if tool.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(tool.errors.count, "error") %> No se puede crear esta herramienta</h2>
+
+      <ul>
+        <% tool.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :Descripción, style: "display: block" %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :Marca, style: "display: block" %>
+    <%= form.text_field :brand, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :Calibre, style: "display: block" %>
+    <%= form.text_field :caliber, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :Características, style: "display: block" %>
+    <%= form.text_area :characteristics, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :Fecha_de_Compra, style: "display: block" %>
+    <%= form.date_field :buying_date, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :Fecha_de_Ingreso, style: "display: block" %>
+    <%= form.date_field :ingress_date, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :Empresa, style: "display: block",class:"m-2" %>
+            <%= form.collection_select(:enterprise_id, Enterprise.all, :id, :name, { prompt: 'Seleccione una Empresa'}, { class: 'form-control' }) %>
+  </div>
+
+  <br>
+  <div>
+      <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+    </div>
+<% end %>

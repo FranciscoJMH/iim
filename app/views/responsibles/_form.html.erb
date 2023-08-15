@@ -1,0 +1,26 @@
+<%= form_with(model: responsible) do |form| %>
+  <% if responsible.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(responsible.errors.count, "error") %> prohibited this responsible from being saved:</h2>
+
+      <ul>
+        <% responsible.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h4>
+  <div>
+    <%= form.label :Nombre, style: "display: block" %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+  </h4>
+
+  <br>
+
+  <div>
+    <%= form.submit 'Guardar', class: "btn btn-primary" %>
+  </div>
+<% end %>

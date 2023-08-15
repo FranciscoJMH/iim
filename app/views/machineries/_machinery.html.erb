@@ -1,0 +1,28 @@
+<section>
+  <div class="container">
+    <div class="box">
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th colspan="11"><h2>Información de la Maquinaria</h2></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="<%= dom_id machinery %>">
+            <td><strong>Número:</strong><br><%= machinery.number %></td>
+            <td><strong>Código:</strong><br><%= machinery.code %></td>
+            <td><strong>Tipo:</strong><br><%= machinery.machine_type %></td>
+            <td><strong>Características:</strong><br><%= machinery.characteristics %></td>
+            <td><strong>Costo IVA:</strong><br><%= machinery.cost_iva %></td>
+            <td><strong>Flete:</strong><br><%= machinery.freight %></td>
+            <td><strong>Fecha de inicio de renta:</strong><br><%= machinery.init_date %></td>
+            <td><strong>Fecha de próxima renovación:</strong><br><%= machinery.renovation_date %></td>
+            <td><strong>Nota:</strong><br><%= machinery.note %></td>
+            <td><strong>Proveedor:</strong><br><%= machinery.provider_id %></td>
+            <td><strong>Empresa:</strong><br><%= machinery.enterprise_id %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
