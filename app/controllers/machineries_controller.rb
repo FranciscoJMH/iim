@@ -19,6 +19,7 @@ class MachineriesController < ApplicationController
   end
 
   def new_rent
+    @machinery = Machinery.new
     render :new_rent
   end
 

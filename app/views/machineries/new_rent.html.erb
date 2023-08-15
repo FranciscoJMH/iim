@@ -13,14 +13,14 @@
         <h1 class="mb-0">Nueva Renta</h1>
       </div>
     </div>
-
     <%= form_tag(new_machinery_path, method: :get, style: "display: block", class: "m-2") do %>
       <div class="mb-3">
         <%= label_tag :enterprise_id, "Empresa", class: "my-label-class" %>
-        <%= form.collection_select(:enterprise_id, Enterprise.all, :id, :name, { prompt: 'Seleccione Empresa'}, { class: 'form-control', id: 'enterprise-select' }) %>
+        <%= collection_select(:machinery, :enterprise_id, Enterprise.all, :id, :name, { prompt: 'Seleccione Empresa'}, { class: 'form-control', id: 'enterprise-select' }) %>
         <span id="selected-enterprise-name"></span>
       </div>
-        <%= submit_tag "Empezar llenado", class: "btn btn-primary" %>
+      <%= hidden_field_tag :selected_enterprise_name, '', id: 'selected-enterprise-name-input' %>
+      <%= submit_tag "Empezar llenado", class: "btn btn-primary" %>
     <% end %>
   </div>
 </section>
@@ -56,6 +56,7 @@ $(document).ready(function() {
   $('#enterprise-select').on('change', function() {
     var selectedEnterpriseName = $(this).find(':selected').text();
     $('#selected-enterprise-name').text(selectedEnterpriseName);
+    $('#selected-enterprise-name-input').val(selectedEnterpriseName); // Actualizar el campo oculto
   });
 });
 </script>
