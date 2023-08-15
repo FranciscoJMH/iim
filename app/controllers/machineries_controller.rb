@@ -18,6 +18,10 @@ class MachineriesController < ApplicationController
   def show
   end
 
+  def new_rent
+    render :new_rent
+  end
+
   def show_details
       @enterprise = Enterprise.find(params[:id])
       @machineries = @enterprise.machineries
