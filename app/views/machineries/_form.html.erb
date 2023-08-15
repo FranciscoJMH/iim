@@ -61,10 +61,10 @@
         <%= form.collection_select(:provider_id, Provider.all, :id, :name, { prompt: 'Seleccione Proveedor'}, { class: 'form-control' }) %>
   </div>
 
-  <div>
-    <%= form.label :Empresa, style: "display: block",class:"m-2" %>
-        <%= form.collection_select(:enterprise_id, Enterprise.all, :id, :name, { prompt: 'Seleccione Empresa'}, { class: 'form-control' }) %>
-  </div>
+ <div>
+   <%= form.label :Empresa, style: "display: block", class: "m-2" %>
+   <%= form.text_field :selected_enterprise_name, class: 'form-control', readonly: true, id: 'selected-enterprise-name-field' %>
+ </div>
 
   <div>
     <%= form.label :Días_de_diferencia, style: "display: block" %>

@@ -17,7 +17,8 @@
     <%= form_tag(new_machinery_path, method: :get, style: "display: block", class: "m-2") do %>
       <div class="mb-3">
         <%= label_tag :enterprise_id, "Empresa", class: "my-label-class" %>
-        <%= collection_select(:machinery, :enterprise_id, Enterprise.all, :id, :name, prompt: 'Seleccione Empresa', class: 'form-control my-collection-select-class') %>
+        <%= form.collection_select(:enterprise_id, Enterprise.all, :id, :name, { prompt: 'Seleccione Empresa'}, { class: 'form-control', id: 'enterprise-select' }) %>
+        <span id="selected-enterprise-name"></span>
       </div>
         <%= submit_tag "Empezar llenado", class: "btn btn-primary" %>
     <% end %>
@@ -49,3 +50,12 @@
   .my-collection-select-class {
   }
 </style>
+
+<script>
+$(document).ready(function() {
+  $('#enterprise-select').on('change', function() {
+    var selectedEnterpriseName = $(this).find(':selected').text();
+    $('#selected-enterprise-name').text(selectedEnterpriseName);
+  });
+});
+</script>
