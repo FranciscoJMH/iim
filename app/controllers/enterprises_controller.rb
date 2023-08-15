@@ -49,12 +49,14 @@ class EnterprisesController < ApplicationController
 
   # DELETE /enterprises/1 or /enterprises/1.json
   def destroy
-    @enterprise.destroy
+    begin
+         @enterprise.destroy
+         flash[:notice] = "Empresa eliminada correctamente."
+       rescue ActiveRecord::InvalidForeignKey
+         flash[:alert] = "No se puede eliminar la empresa porque está siendo referenciada en otro apartado (Maquinaria y/o Herramientas)."
+   end
 
-    respond_to do |format|
-      format.html { redirect_to enterprises_url, notice: "Empresa eliminada correctamente." }
-      format.json { head :no_content }
-    end
+   redirect_to enterprises_url
   end
 
   private

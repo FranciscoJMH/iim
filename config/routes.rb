@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :tools
-  resources :machineries
+  resources :machineries do
+    collection do
+     get 'show_details/:id', to: 'machineries#show_details', as: 'show_details'
+    end
+  end
   resources :enterprises
   resources :responsibles
     devise_scope :user do

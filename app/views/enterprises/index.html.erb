@@ -14,6 +14,17 @@
               </thead>
 
               <tbody>
+              <% if flash[:notice] %>
+                <div class="alert alert-success">
+                    <%= flash[:notice] %>
+                </div>
+              <% end %>
+
+              <% if flash[:alert] %>
+                <div class="alert alert-danger">
+                    <%= flash[:alert] %>
+                </div>
+              <% end %>
               <% @enterprises.each do |enterprise| %>
                 <tr id="<%= dom_id enterprise %>">
                   <td><%= enterprise.name %></td>

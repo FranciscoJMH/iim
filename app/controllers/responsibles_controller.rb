@@ -49,12 +49,14 @@ class ResponsiblesController < ApplicationController
 
   # DELETE /responsibles/1 or /responsibles/1.json
   def destroy
-    @responsible.destroy
-
-    respond_to do |format|
-      format.html { redirect_to responsibles_url, notice: "Responsable eliminado correctamente." }
-      format.json { head :no_content }
+    begin
+      @responsible.destroy
+      flash[:notice] = "Responsable eliminado correctamente."
+    rescue ActiveRecord::InvalidForeignKey
+      flash[:alert] = "No se puede eliminar el responsable porque está siendo referenciado en el apartado de Empresas."
     end
+
+    redirect_to responsibles_url
   end
 
   private

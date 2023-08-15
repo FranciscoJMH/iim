@@ -18,6 +18,11 @@ class MachineriesController < ApplicationController
   def show
   end
 
+  def show_details
+      @enterprise = Enterprise.find(params[:id])
+      @machineries = @enterprise.machineries
+  end
+
   # GET /machineries/new
   def new
     @machinery = Machinery.new
